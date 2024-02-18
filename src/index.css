@@ -1,0 +1,560 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .input {
+    @apply rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 focus:outline-none focus:ring focus:ring-stone-400 md:px-6 md:py-3;
+  }
+  .loader {
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(theme(colors.stone.800) 0 0);
+    background:
+      var(--c) 0% 50%,
+      var(--c) 50% 50%,
+      var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear;
+  }
+
+  @keyframes loading {
+    20% {
+      background-position:
+        0% 0%,
+        50% 50%,
+        100% 50%;
+    }
+    40% {
+      background-position:
+        0% 100%,
+        50% 0%,
+        100% 50%;
+    }
+    60% {
+      background-position:
+        0% 50%,
+        50% 100%,
+        100% 0%;
+    }
+    80% {
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 100%;
+    }
+  }
+  .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .section-title.section-title-2 h2 {
+    font-weight: 700;
+    margin-left: -3rem;
+  }
+  .fan-text {
+    color: #000000;
+    text-align: center;
+  }
+
+  .message-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 7rem;
+    z-index: 2;
+    margin-left: -5rem;
+  }
+  .col-lg-3 {
+    display: inline-block;
+    margin: 70px;
+    width: 200px;
+  }
+  .message-wrap {
+    box-shadow: 0 3px 39px rgba(139, 139, 139, 0.16);
+    border-radius: 10px;
+    background: white;
+    position: relative;
+    width: 13rem;
+    margin-top: -7rem;
+    margin-left: -7rem;
+    transition: transform 1s ease;
+    z-index: 2;
+  }
+
+  .message-wrap h6.title {
+    font-size: 19px;
+    font-weight: 600;
+    background: #000000;
+    color: #ffffff;
+    height: 64px;
+    line-height: 64px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+  }
+  .btn.btn-border-2 {
+    border: 2px solid #000000;
+    background: #ffffff;
+    border-radius: 0;
+    font-family: var(--heading-font);
+    transform: perspective(1px) translateZ(0);
+    z-index: 1;
+  }
+  .btn {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 36px;
+    overflow: hidden;
+    position: relative;
+    border: 0;
+    transition: all 0.5s ease;
+    font-weight: 400;
+    font-size: 16px;
+    display: inline-block;
+  }
+  .btn.btn-border-2:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000000;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition-duration: 0.4s;
+  }
+  .message-wrap:after {
+    content: "";
+    position: absolute;
+    background: url(../round.png);
+    width: 163px;
+    height: 163px;
+    right: -5rem;
+    bottom: 0;
+    z-index: -20;
+    animation: img-top-bounce 7s infinite ease-in-out;
+  }
+  @keyframes img-top-bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  .btn.btn-border-2:hover {
+    color: #fff;
+  }
+  .btn.btn-border-2:hover:before {
+    transform: scaleX(1);
+  }
+  .btn.btn-border-2:focus,
+  .btn.btn-border-2:active {
+    color: #ffffff;
+  }
+  .btn.btn-border-2:active:before,
+  .btn.btn-border-2:focus:before {
+    transform: scaleX(1);
+  }
+  .btn.btn2 {
+    border-radius: 35px;
+  }
+  /* Add this media query for tablets and smaller screens */
+  @media (max-width: 760px) {
+    .fan-text {
+      text-align: center;
+      margin-left: 7rem;
+    }
+
+    .btn {
+      font-size: 14px;
+      padding: 0 20px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    .message-wrap {
+      width: 15rem;
+      margin-top: -8rem;
+    }
+
+    .message-wrap h6.title {
+      font-size: 16px;
+      height: 48px;
+      line-height: 48px;
+    }
+
+    .message-wrap p {
+      font-size: 12px;
+    }
+
+    .message-wrap .message-form-wrap {
+      padding: 20px;
+    }
+
+    .message-wrap .message-form-wrap .btn {
+      margin-top: 8px;
+    }
+    .message-container {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 1rem;
+      margin-left: 15rem;
+      z-index: 2;
+    }
+    .message-wrap:after {
+      content: "";
+      position: absolute;
+      background: url(../round.png);
+      width: 100px;
+      height: 100px;
+      right: 3rem;
+      bottom: 0;
+      z-index: -2;
+      animation: img-top-bounce 7s infinite ease-in-out;
+    }
+  }
+
+  /* Add this media query for smaller screens like phones */
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 30px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    h3 {
+      font-size: 20px;
+    }
+
+    h4 {
+      font-size: 18px;
+    }
+
+    h5 {
+      font-size: 16px;
+    }
+
+    h6 {
+      font-size: 14px;
+    }
+
+    .btn {
+      font-size: 12px;
+      padding: 0 15px;
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .message-wrap h6.title {
+      font-size: 14px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    .message-wrap p {
+      font-size: 10px;
+    }
+
+    .message-wrap .message-form-wrap {
+      padding: 25px;
+    }
+
+    .message-wrap .message-form-wrap .btn {
+      margin-top: 6px;
+    }
+  }
+  .payment-card {
+    animation: zoomInOut 2s ease-in-out;
+  }
+
+  @keyframes zoomInOut {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  :root {
+    --main-color: #fda94f;
+    --heading-color: #292929;
+    --paragraph-color: #292929;
+    --heading-font: "Poppins", sans-serif;
+    --body-font: "Roboto", sans-serif;
+    --body-font-size: 16px;
+    --line-height30: 1.7;
+  }
+  #fundraisers-section {
+    background-position: -17px -3px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1000px;
+    margin-left: -7rem;
+  }
+
+  .change-yours {
+    color: #ffffff;
+    font-family: "Circe", Sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1.2em;
+    letter-spacing: -0.1px;
+    padding-bottom: 5rem;
+  }
+  .join-us {
+    color: #ffffff;
+    font-family: "Circe", Sans-serif;
+    font-size: 70px;
+    font-weight: 800;
+    padding: 0;
+
+    margin-left: 1rem;
+    line-height: 1;
+  }
+  #fundraisers-section h2 {
+    text-align: center;
+    color: #fd8f00;
+    text-transform: uppercase;
+  }
+  .donation {
+    font-family: "Circe", Sans-serif;
+    font-weight: 800;
+    line-height: 2em;
+    font-size: 16px;
+    padding: 35px 30px;
+    border-radius: 4px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    background-color: #000000;
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .donation-btn {
+    margin-top: 20rem;
+    margin-left: 1rem;
+  }
+
+  .donation:hover {
+    padding: 45px 40px;
+  }
+  #fundraiser-section a:hover {
+    text-decoration: none;
+  }
+  .each-day {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+  }
+  .Aniston-life {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 300;
+    width: 100%;
+  }
+  .fundraiser-card {
+    background-image: url("../fundraiser.webp");
+    background-position: -17px -3px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 10rem;
+  }
+  @media (max-width: 768px) {
+    #fundraisers-section {
+      background-position: center;
+      padding: 20px; /* Adjust padding as needed */
+      width: 100%;
+      margin-left: -0.2rem;
+    }
+
+    .change-yours {
+      font-size: 28px;
+      padding-bottom: 3rem;
+    }
+
+    .join-us {
+      font-size: 50px;
+      margin-left: 0;
+    }
+
+    #fundraisers-section h2 {
+      font-size: 24px;
+    }
+
+    .donation {
+      font-size: 14px;
+      padding: 25px 20px;
+    }
+
+    .donation-btn {
+      margin-top: 10rem;
+      margin-left: 0;
+    }
+
+    .donation:hover {
+      padding: 35px 30px;
+    }
+
+    .each-day {
+      font-size: 2rem;
+    }
+
+    .Aniston-life {
+      font-size: 1.5rem;
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .fundraiser-card {
+      padding-bottom: 5rem;
+    }
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active,
+  .dot:hover {
+    background-color: #717171;
+  }
+
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .reservation-section {
+    opacity: 0;
+  }
+  .hidden {
+    display: none;
+  }
+
+  @keyframes flying-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-flying-in {
+    animation: flying-in 0.5s ease-out forwards;
+  }
+  .section {
+    opacity: 0;
+  }
+  .menu-container {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
